@@ -28,7 +28,7 @@ Before setting up `gtlin`, make sure you have these tools installed:
 Create the function file in your home directory:
 
 ```bash
-curl -o ~/gtlin-function.sh https://raw.githubusercontent.com/[YOUR-REPO]/gtlin-function.sh
+curl -o ~/gtlin-function.sh https://raw.githubusercontent.com/tomgrin10/gtlin/main/gtlin-function.sh
 ```
 
 Or manually create `~/gtlin-function.sh` with this content:
