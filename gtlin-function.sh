@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Function to create a git branch from a Linear issue
-# Usage: gtlin "HER-123-fix-user-authentication"
+# Usage: gtlin "ACME-123-fix-user-authentication"
 gtlin() {
     local branch_name="$1"
     
     # Validate input
     if [[ -z "$branch_name" ]]; then
         echo "Error: Branch name is required"
-        echo "Usage: gtlin 'HER-xy-name-of-branch'"
+        echo "Usage: gtlin 'ACME-xy-name-of-branch'"
         return 1
     fi
     
@@ -19,12 +19,12 @@ gtlin() {
         return 1
     fi
     
-    # Extract Linear issue ID from branch name (e.g., HER-123 from HER-123-fix-user-auth)
+    # Extract Linear issue ID from branch name (e.g., ACME-123 from ACME-123-fix-user-auth)
     local issue_id
-    issue_id=$(echo "$branch_name" | grep -o "^HER-[0-9]\+")
+    issue_id=$(echo "$branch_name" | grep -o "^ACME-[0-9]\+")
     
     if [[ -z "$issue_id" ]]; then
-        echo "Error: Branch name must start with HER-xy format (e.g., HER-123-branch-name)"
+        echo "Error: Branch name must start with ACME-xy format (e.g., ACME-123-branch-name)"
         return 1
     fi
     

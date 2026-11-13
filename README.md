@@ -37,14 +37,14 @@ Or manually create `~/gtlin-function.sh` with this content:
 #!/bin/bash
 
 # Function to create a git branch from a Linear issue
-# Usage: gtlin "HER-123-fix-user-authentication"
+# Usage: gtlin "ACME-123-fix-user-authentication"
 gtlin() {
     local branch_name="$1"
     
     # Validate input
     if [[ -z "$branch_name" ]]; then
         echo "Error: Branch name is required"
-        echo "Usage: gtlin 'HER-xy-name-of-branch'"
+        echo "Usage: gtlin 'ACME-xy-name-of-branch'"
         return 1
     fi
     
@@ -55,12 +55,12 @@ gtlin() {
         return 1
     fi
     
-    # Extract Linear issue ID from branch name (e.g., HER-123 from HER-123-fix-user-auth)
+    # Extract Linear issue ID from branch name (e.g., ACME-123 from ACME-123-fix-user-auth)
     local issue_id
-    issue_id=$(echo "$branch_name" | grep -o "^HER-[0-9]\+")
+    issue_id=$(echo "$branch_name" | grep -o "^ACME-[0-9]\+")
     
     if [[ -z "$issue_id" ]]; then
-        echo "Error: Branch name must start with HER-xy format (e.g., HER-123-branch-name)"
+        echo "Error: Branch name must start with ACME-xy format (e.g., ACME-123-branch-name)"
         return 1
     fi
     
@@ -145,11 +145,11 @@ You should see the usage message if everything is set up correctly.
 Once set up, you can create branches from Linear issues like this:
 
 ```bash
-gtlin HER-123-add-user-authentication
+gtlin ACME-123-add-user-authentication
 ```
 
 This will:
-1. Extract the issue ID (HER-123) from the branch name
+1. Extract the issue ID (ACME-123) from the branch name
 2. Fetch the issue title from Linear
 3. Create a new git branch using Graphite with the Linear issue title as the commit message
 4. Push the branch and create a PR
@@ -172,7 +172,7 @@ Install Graphite CLI: `npm install -g @graphite.dev/gt`
 
 ## What gtlin Does
 
-1. **Validates** the branch name format (must start with HER-XXX)
+1. **Validates** the branch name format (must start with ACME-XXX)
 2. **Extracts** the Linear issue ID from the branch name
 3. **Fetches** the issue title from Linear using the CLI
 4. **Creates** a new git branch using Graphite
